@@ -1,23 +1,23 @@
-export const price = (amount: string, currency: string): string => {
-  const formatter = new Intl.NumberFormat("pl", {
-    style: "currency",
-    currency: currency,
-  });
+const moneyFormatter = new Intl.NumberFormat('pl', {
+  style: 'currency',
+  currency: 'PLN',
+});
 
-  return formatter.format(parseFloat(amount));
+const pluralFormatter: Record<Intl.LDMLPluralRule, string> = {
+  zero: 'pokoi',
+  one: 'pokój',
+  two: 'pokoje',
+  few: 'pokoje',
+  many: 'pokoi',
+  other: 'pokoi',
+} as const;
+
+export const formatPrice = (amount: string): string => {
+  return moneyFormatter.format(parseFloat(amount));
 };
 
-export const rooms = (count: number): string => {
-  const plurarRules = new Intl.PluralRules("pl", { type: "cardinal" });
+export const formatRoomsCount = (count: number): string => {
+  const plurarRules = new Intl.PluralRules('pl', { type: 'cardinal' });
 
-  const pluralForms: Record<Intl.LDMLPluralRule, string> = {
-    zero: "pokoi",
-    one: "pokój",
-    two: "pokoje",
-    few: "pokoje",
-    many: "pokoi",
-    other: "pokoi",
-  } as const;
-
-  return `${count} ${pluralForms[plurarRules.select(count)]} `;
+  return `${count} ${pluralFormatter[plurarRules.select(count)]} `;
 };

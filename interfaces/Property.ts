@@ -7,4 +7,8 @@ export interface Property {
     amount: string;
     currency: string;
   };
+  priceM2: null | {
+    amount: string;
+    currency: string;
+  };
 }

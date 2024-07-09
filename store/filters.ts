@@ -1,6 +1,6 @@
-import { defineStore } from "pinia";
+import { defineStore } from 'pinia';
 
-export const useFiltersStore = defineStore("filterStore", () => {
+export const useFiltersStore = defineStore('filterStore', () => {
   const priceFrom = ref<undefined | string>();
   const priceTo = ref<undefined | string>();
   const roomsFrom = ref<undefined | string>();

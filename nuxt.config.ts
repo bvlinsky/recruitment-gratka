@@ -1,4 +1,4 @@
-const { NUXT_PUBLIC_API_URL = "http://localhost" } = process.env;
+const { NUXT_PUBLIC_API_URL = 'http://localhost' } = process.env;
 
 export default defineNuxtConfig({
   runtimeConfig: {
@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ["@nuxtjs/apollo", "@nuxt/fonts", "@nuxt/icon", "@pinia/nuxt"],
+  modules: ['@nuxtjs/apollo', '@nuxt/fonts', '@nuxt/icon', '@pinia/nuxt'],
 
   apollo: {
     clients: {
@@ -18,21 +18,20 @@ export default defineNuxtConfig({
   },
 
   fonts: {
-    families: [{ name: "Space Grotesk", provider: "bunny" }],
+    families: [{ name: 'Space Grotesk', provider: 'bunny' }],
   },
 
   app: {
     head: {
       htmlAttrs: {
-        lang: "pl",
+        lang: 'pl',
       },
-      charset: "utf-8",
-      viewport:
-        "width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5",
+      charset: 'utf-8',
+      viewport: 'width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5',
     },
   },
 
   devtools: { enabled: true },
   telemetry: false,
-  compatibilityDate: "2024-07-09",
+  compatibilityDate: '2024-07-09',
 });
