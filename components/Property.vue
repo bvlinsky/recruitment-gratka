@@ -56,6 +56,10 @@ const { property } = defineProps<{
     grid-template-columns: 192px 1fr;
     gap: 1rem;
 
+    @media (max-width: variables.$break-point) {
+        grid-template-columns: 1fr;
+    }
+
     &__img {
         border-radius: 0.5rem;
         height: 144px;

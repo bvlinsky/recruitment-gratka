@@ -9,7 +9,7 @@
         <template #panel>
             <div class="rooms">
                 <Input v-model="from" type="number" />
-                do
+                <div>do</div>
                 <Input v-model="to" type="number" />
             </div>
         </template>
@@ -32,6 +32,11 @@ const to = defineModel<number | undefined>("to");
     font-family: variables.$font;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
+
+    @media (max-width: variables.$break-point) {
+        flex-wrap: wrap;
+    }
 }
 </style>

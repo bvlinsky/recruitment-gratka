@@ -23,13 +23,23 @@ const open = defineModel({ default: false });
 
     &__panel {
         position: absolute;
-        top: 40px;
         left: 0;
         z-index: 3;
         padding: 1rem;
         border-radius: 0.5rem;
         background: white;
         box-shadow: variables.$shadow;
+
+        @media (min-width: variables.$break-point) {
+            top: 40px;
+        }
+
+        @media (max-width: variables.$break-point) {
+            position: fixed;
+            left: 1rem;
+            bottom: 2rem;
+            width: calc(100% - 4rem);
+        }
 
         &--hidden {
             display: none;

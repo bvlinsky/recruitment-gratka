@@ -86,6 +86,7 @@ const { data } = await useAsyncQuery(query, {
     &__content {
         max-width: variables.$break-point;
         margin: 0 auto;
+        padding: 20px;
     }
 
     &__list {

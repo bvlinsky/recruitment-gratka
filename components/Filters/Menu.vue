@@ -28,6 +28,7 @@ const commit = () => {
 <style lang="scss" scoped>
 .filters-menu {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.5rem;
 }
 </style>
