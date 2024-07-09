@@ -1,23 +1,41 @@
-# Nuxt 3 Minimal Starter
+# Zadanie
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Celem zadania jest przygotowanie listingu ofert nieruchomości zawierającego mieszkania na sprzedaż. Do realizacji zadania należy wykorzystać framework Vue.js lub Nuxt.js (Nuxt.js nie jest wymagany, ale jest lepiej punktowany).
+
+Dane, które należy wyświetlić należy pobrać z API GraphQL, znajdującego się pod adresem ---.
+
+Jedynym warunkiem dotyczącym wyglądu listingu jest czytelne wyświetlenie danych. Można do tego celu wykorzystać samodzielnie napisany, podstawowy css/scss lub dowolną bibliotekę css - nie jest to istotne.
+
+Listing powinien prezentować 32 oferty z Polski - jest to domyślny argument wyszukiwania w searchFilters. Oferty powinny zawierać dane (w przypadku braku wyświetlić "brak danych") o:
+
+- lokalizacji (locationShort) w której znajduje się nieruchomość
+- cenie w zł
+- liczbie pokoi
+- powierzchni w metrach kwadratowych (totalArea)
+
+Listing powinien mieć możliwość dodania filtrowania do zapytania na podstawie:
+
+- ceny pole od do
+- liczby pokoi pole od do
+
+Filtrowanie zostaje uruchomione po kliknięciu przycisku "szukaj".
+
+W zadaniu należy z jak najlepszej strony pokazać swoje techniki pisania czystego kodu w dużej aplikacji.
+
+Kolejne dodatkowe punkty można otrzymać za zrobienie paginacji. Oferty na listingu nie mają być podlinkowane.
 
 ## Setup
+
+Copy `.env.example`:
+
+```bash
+cp .env.example .env
+```
 
 Make sure to install the dependencies:
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
 ## Development Server
@@ -25,17 +43,7 @@ bun install
 Start the development server on `http://localhost:3000`:
 
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
 ## Production
@@ -43,33 +51,13 @@ bun run dev
 Build the application for production:
 
 ```bash
-# npm
 npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
 Locally preview production build:
 
 ```bash
-# npm
 npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
