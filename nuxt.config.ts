@@ -7,7 +7,7 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['@nuxtjs/apollo', '@nuxt/fonts', '@nuxt/icon', '@pinia/nuxt'],
+  modules: ['@nuxtjs/apollo', '@nuxt/fonts', '@nuxt/icon'],
 
   apollo: {
     clients: {

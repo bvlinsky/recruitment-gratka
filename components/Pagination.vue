@@ -1,35 +1,22 @@
 <template>
   <div class="pagination">
-    <Button
-      :primary="page !== 1"
-      :disabled="page === 1"
-      @click="
-        page--;
-        scroll();
-      "
-    >
+    <Button :primary="page > 1" :disabled="page <= 1" @click="changeRouteQuery({ page: page - 1 })">
       Poprzednia strona
     </Button>
-    <Button
-      primary
-      @click="
-        page++;
-        scroll();
-      "
-      >Następna strona</Button
-    >
+    <Button primary @click="changeRouteQuery({ page: page + 1 })"> Następna strona </Button>
   </div>
 </template>
 
 <script lang="ts" setup>
-const page = defineModel<number>({ required: true });
+import { changeRouteQuery } from '~/utils/changeRouteQuery';
 
-const scroll = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth',
-  });
-};
+const route = useRoute();
+const page = ref<number>(Number(route.query.page ?? 1));
+
+watch(
+  () => route.query,
+  () => (page.value = Number(route.query.page ?? 1)),
+);
 </script>
 
 <style lang="scss" scoped>

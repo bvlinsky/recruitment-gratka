@@ -15,9 +15,7 @@
     "@nuxt/fonts": "^0.7.1",
     "@nuxt/icon": "^1.0.0",
     "@nuxtjs/apollo": "^5.0.0-alpha.14",
-    "@pinia/nuxt": "^0.5.1",
     "nuxt": "^3.12.2",
-    "pinia": "^2.1.7",
     "vue": "latest",
     "sass": "^1.77.6"
   },

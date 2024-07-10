@@ -19,8 +19,8 @@
 <script lang="ts" setup>
 const isOpen = ref(false);
 
-const from = defineModel<string | undefined>('from');
-const to = defineModel<string | undefined>('to');
+const from = defineModel<number | undefined>('from');
+const to = defineModel<number | undefined>('to');
 </script>
 
 <style lang="scss" scoped>

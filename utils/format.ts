@@ -12,8 +12,8 @@ const pluralFormatter: Record<Intl.LDMLPluralRule, string> = {
   other: 'pokoi',
 } as const;
 
-export const formatPrice = (amount: string): string => {
-  return moneyFormatter.format(parseFloat(amount));
+export const formatPrice = (amount: number): string => {
+  return moneyFormatter.format(amount);
 };
 
 export const formatRoomsCount = (count: number): string => {

@@ -18,20 +18,22 @@
           :property="property"
         />
       </div>
-      <Pagination v-model="page" />
+      <Pagination />
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { storeToRefs } from 'pinia';
 import type { PropertiesResults } from '~/interfaces/PropertiesResults';
-import { useFiltersStore } from '~/store/filters';
 import { getPropertiesQuery } from '~/queries/getProperties';
 
-const page = ref(1);
-const filtersStore = useFiltersStore();
-const { priceFrom, priceTo, roomsFrom, roomsTo } = storeToRefs(filtersStore);
+const route = useRoute();
+
+const page = ref<number>(Number(route.query.page ?? 1));
+const priceFrom = ref<undefined | number>(Number(route.query.priceFrom));
+const priceTo = ref<undefined | number>(Number(route.query.priceTo));
+const roomsFrom = ref<undefined | number>(Number(route.query.roomsFrom));
+const roomsTo = ref<undefined | number>(Number(route.query.roomsTo));
 
 const { data } = await useAsyncQuery<PropertiesResults>(getPropertiesQuery, {
   priceFrom,
@@ -40,6 +42,22 @@ const { data } = await useAsyncQuery<PropertiesResults>(getPropertiesQuery, {
   roomsTo,
   page,
 });
+
+// normally I would use the refresh function from useAsyncData but it doesn't work in this library
+watch(
+  () => route.query,
+  () => {
+    priceFrom.value = Number(route.query.priceFrom);
+    priceTo.value = Number(route.query.priceTo);
+    roomsFrom.value = Number(route.query.roomsFrom);
+    roomsTo.value = Number(route.query.roomsTo);
+    page.value = Number(route.query.page ?? 1);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  },
+);
 </script>
 
 <style lang="scss" scoped>

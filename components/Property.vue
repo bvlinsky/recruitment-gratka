@@ -17,11 +17,11 @@
       </div>
       <div>
         <div v-if="property.price" class="property__price">
-          {{ formatPrice(property.price.amount) }}
+          {{ formatPrice(Number(property.price.amount)) }}
         </div>
         <div v-else class="property__price">Zapytaj o cenę</div>
         <small v-if="property.priceM2" class="property__price-m2">
-          {{ formatPrice(property.priceM2.amount) }}/m²
+          {{ formatPrice(Number(property.priceM2.amount)) }}/m²
         </small>
       </div>
     </div>
