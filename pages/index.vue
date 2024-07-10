@@ -7,7 +7,6 @@
       <FiltersMenu />
       <template #info>
         <span v-if="data">{{ data.searchProperties.totalCount }} nieruchomości</span>
-        <span v-else>Wczytywanie...</span>
       </template>
     </Header>
     <div class="index__content">
@@ -18,7 +17,8 @@
           :property="property"
         />
       </div>
-      <Pagination />
+      <div v-if="error" class="index__error">Nie udało nam się załadować wyników wyszukiwania</div>
+      <Pagination v-else />
     </div>
   </div>
 </template>
@@ -35,7 +35,7 @@ const priceTo = ref<undefined | number>(Number(route.query.priceTo));
 const roomsFrom = ref<undefined | number>(Number(route.query.roomsFrom));
 const roomsTo = ref<undefined | number>(Number(route.query.roomsTo));
 
-const { data } = await useAsyncQuery<PropertiesResults>(getPropertiesQuery, {
+const { data, error } = await useAsyncQuery<PropertiesResults>(getPropertiesQuery, {
   priceFrom,
   priceTo,
   roomsFrom,
@@ -76,6 +76,15 @@ watch(
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+  }
+
+  &__error {
+    font-family: variables.$font;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100px;
   }
 }
 </style>
